@@ -4,7 +4,7 @@
 <div class="heroes-menu">
     @if (heroes) {
     @for (hero of heroes; track hero.id) {
-    <a routerLink="/detail/{{hero.id}}">
+    <a routerLink="/hero/{{hero.id}}">
         {{hero.name}}
     </a>
     }
