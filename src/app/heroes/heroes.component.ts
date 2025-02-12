@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../hero.service';
-import { Hero } from '../hero.interface';
+import { Hero, MarvelApi } from '../hero.interface';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -20,6 +20,6 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.data.results);
   }
 }

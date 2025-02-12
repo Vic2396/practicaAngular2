@@ -1,0 +1,1 @@
+http://gateway.marvel.com/v1/public/comics?ts=1&apikey=af06644182186bede64b88505c501506&hash=dcfc360c4220a74cb74062f5e8bdf575

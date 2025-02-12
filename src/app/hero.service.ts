@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './hero.interface';
+import { Hero, MarvelApi } from './hero.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
 
@@ -8,58 +8,18 @@ import { Observable, of, tap } from 'rxjs';
 })
 export class HeroService {
 
-  private url = 'http://localhost:3000';
-
-  private heroes: Hero[] = [
-    {
-      id: 1,
-      name: "Batman"
-    }, 
-    {
-      id: 2,
-      name: "Capi"
-    }, 
-    {
-      id: 3,
-      name: "SuperPablo"
-    },
-     {
-      id: 4,
-      name: "MegaJorge"
-    }, 
-    {
-      id: 5,
-      name: "CamiloMan"
-    }, 
-    {
-      id: 6,
-      name: "Timurnator"
-    }, 
-    {
-      id: 7,
-      name: "Green Arrow"
-    }, 
-    {
-      id: 8,
-      name: "Blue Spoon"
-    }, 
-    {
-      id: 9,
-      name: "Red richars"
-    }, 
-    {
-      id: 10,
-      name: "Errejón"
-    },
-  ];
+  private ts: string = '1';
+  private apikey: string = 'af06644182186bede64b88505c501506';
+  private hash: string = 'dcfc360c4220a74cb74062f5e8bdf575';
+  private url = `http://gateway.marvel.com/v1/public/comics?ts=${this.ts}&apikey=${this.apikey}&hash=${this.hash}`;
 
   constructor(
     private http: HttpClient
   ) { }
 
 
-  public getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${this.url}/heroes`);
+  public getHeroes(): Observable<MarvelApi> {
+    return this.http.get<MarvelApi>(`${this.url}`);
 
   }
 
