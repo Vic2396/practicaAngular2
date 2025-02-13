@@ -1,6 +1,6 @@
 export interface Hero {
     id: number;
-    title: string;
+    name: string;
     thumbnail: {
         path: string;
         extension: string;

@@ -1,13 +1,15 @@
 
 <app-hero-search></app-hero-search>
 
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
+<h2 class="px-10 py-1 text-2xl font-bold bg-slate-400 lg:w-max">Top Heroes</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
     @if (heroes && heroes.length > 0) {
         @for (hero of heroes; track hero.id) {
-        <a routerLink="/hero/{{hero.id}}">
-            {{hero.title}}
-            <img [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension" alt={{hero.title}}>
+        <a routerLink="/hero/{{hero.id}}" class="flex flex-col items-center gap-4 
+                                            bg-slate-600 hover:bg-slate-800">
+            {{hero.name}}
+            <img [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension" alt={{hero.name}}
+            class="w-72 h-96 lg:w-44 lg:h-56">
         </a>
         }
     }

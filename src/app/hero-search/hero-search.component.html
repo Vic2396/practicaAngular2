@@ -4,9 +4,9 @@
 
     <ul class="search-result">
         @for(hero of heroes$ | async; track hero.id) {
-        <li *ngFor="let hero of heroes$ | async">
+        <li >
             <a routerLink="/hero/{{hero.id}}">
-                {{hero.title}}
+                {{hero.name}}
             </a>
         </li>
         }
