@@ -4,8 +4,12 @@
     @for (hero of heroes; track hero.id) {
     <li>
         <a routerLink="/hero/{{hero.id}}">
-            <span class="badge">{{hero.id}}</span> {{hero.title}}
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
         </a>
     </li>
     }
 </ul>
+
+<button (click)="changePage(-1)">Anterior</button>
+<span>Página {{ currentPage }} of {{ totalPages }}</span>
+<button (click)="changePage(1)">Siguiente</button>

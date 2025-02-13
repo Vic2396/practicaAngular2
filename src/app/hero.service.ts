@@ -17,10 +17,13 @@ export class HeroService {
     private http: HttpClient
   ) { }
 
-
   public getHeroes(): Observable<MarvelApi> {
     return this.http.get<MarvelApi>(`${this.url}`);
+  }
 
+  public getHeroesPaginated(pag: number, limit: number): Observable<MarvelApi> {
+    const offset = (pag - 1) * limit;
+    return this.http.get<MarvelApi>(`${this.url}&offset=${offset}&limit=${limit}`);
   }
 
   public getHero(id: number): Observable<Hero> {
@@ -33,7 +36,6 @@ export class HeroService {
     }
 
     return this.http.get<MarvelApi>(`${this.url}&nameStartsWith=${term}`).pipe(
-      tap(data => console.log(`api called with term "${term}"`)),
       tap(data => console.log(data.data.results)),
       map(data => data.data.results.slice(0, 5))
     );

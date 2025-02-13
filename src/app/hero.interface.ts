@@ -9,6 +9,7 @@ export interface Hero {
 
 export interface MarvelApi {
     data: {
+        total: number;
         results: Hero[];
     };
 }
