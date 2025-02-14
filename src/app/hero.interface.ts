@@ -1,3 +1,7 @@
+export interface Comic {
+    name : string;
+}
+
 export interface Hero {
     id: number;
     name: string;
@@ -5,6 +9,9 @@ export interface Hero {
         path: string;
         extension: string;
     };
+    comics: {
+        items: Comic[];
+    }
 }
 
 export interface MarvelApi {
