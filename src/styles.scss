@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+    --shadow-header: 0px 5px 5px 0px rgba(15, 23, 42, 0.5);
+    --shadow-headerDark: 0px 5px 5px 0px rgba(244, 63, 94, 0.5);
+    --shadow-footer: 0px -5px 5px 0px rgba(15, 23, 42, 0.5);
+    --shadow-footerDark: 0px -5px 5px 0px rgba(244, 63, 94, 0.5);
+}

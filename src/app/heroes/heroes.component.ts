@@ -23,7 +23,7 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.data.results);
+    this.loadHeroes();
   }
 
   loadHeroes(): void {

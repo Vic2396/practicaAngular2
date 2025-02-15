@@ -1,14 +1,19 @@
-<div id="search-component">
-    <label for="search-box">Hero Search</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div id="search-component" class="w-full flex flex-col px-2 sm:px-10 relative z-20">
+    <label for="search-box" class="block font-bold mt-5 mb-2 text-xl">
+        Busca tu h&eacute;roe
+    </label>
 
-    <ul class="search-result">
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Empieza a escribir" 
+    class="w-full sm:max-w-lg p-2 box-border block border-b-2 focus:border-red-600 focus:outline-none"/>
+
+    <ul class="search-result grid w-full max-w-full sm:max-w-lg absolute top-full left-0 sm:left-10 bg-white">
         @for(hero of heroes$ | async; track hero.id) {
-        <li >
-            <a routerLink="/hero/{{hero.id}}">
-                {{hero.name}}
-            </a>
-        </li>
+            <li class="list-none">
+                <a routerLink="/hero/{{hero.id}}" class="w-full p-2 appearance-none text-black border-b border-l border-r border-gray-500 inline-block
+                hover:bg-gray-600 hover:text-white">
+                    {{hero.name}}
+                </a>
+            </li>
         }
     </ul>
 </div>

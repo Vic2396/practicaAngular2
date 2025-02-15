@@ -1,27 +1,41 @@
 @if (hero) {
-<div>
-    <h2>{{hero.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{hero.id}}</div>
-    <div>
-        <label for="hero-name">Hero name: </label>
-        <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name" />
-    </div>
-    <button type="button" (click)="goBack()">go back</button>
-    <img [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension" alt={{hero.name}}
-    class="w-72 h-96 lg:w-44 lg:h-56">
-    
-    @if (hero.comics.items.length > 0) {
-        <section>
-            <h3>Comics en los que aparece</h3>
-            <ul>
-                @for (comic of hero.comics.items; track comic.name) {
-                <li>{{ comic.name }}</li>
-                }
-            </ul>
-        </section>
-    }
-</div>
+    <section class="flex flex-col gap-4 items-center px-4 sm:px-10 md:px-36 pt-6 pb-4">
+        <h2 class="w-max px-10 py-1 text-center text-white text-sm sm:text-lg font-extrabold lg:w-max border-t-2 border-b-2 border-rose-600 [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000]">
+            {{hero.name | uppercase}}
+        </h2>
 
+        <div class="w-full flex flex-col gap-4">
+            <div>
+                <div><span class="font-bold">ID: </span>{{hero.id}}</div>
+
+                <label for="hero-name" class="font-bold grid grid-cols-[auto_1fr] gap-2">
+                    Hero name: 
+                    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name" class="font-normal" />
+                </label>
+            </div>
+    
+            <button type="button" (click)="goBack()" class="px-4 py-1 max-w-20 text-white bg-neutral-900 hover:bg-neutral-800 rounded">
+                Volver
+            </button>
+
+            <img [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension" alt={{hero.name}} 
+            class="border-2 border-black w-full max-w-96">
+            
+            @if (hero.comics.items.length > 0) {
+                <section class="flex flex-col gap-3">
+                    <h3 class="font-bold sm:text-lg">C&oacute;mics en los que aparece</h3>
+
+                    <ul class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-2 text-white">
+                        @for (comic of hero.comics.items; track comic.name) {
+                            <li class="px-2 py-2 bg-neutral-700 rounded">
+                                {{ comic.name }}
+                            </li>
+                        }
+                    </ul>
+                </section>
+            }
+        </div>
+    </section>
 } @else {
     <h1>NO SE HA ENCONTRADO EL HÉROE</h1>
 }

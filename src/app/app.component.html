@@ -1,12 +1,21 @@
 <!-- HEADER -->
-<h1> TOUR OF HEROES </h1>
+<header class="sticky z-50 top-0 py-2 sm:pt-4 sm:px-10 w-full flex flex-col items-center gap-4 bg-neutral-950 shadow-md shadow-red-600">
+    <h1 class="w-max font-extrabold text-xl px-6 py-1 text-white bg-red-600 text-center [text-shadow:_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000,_2px_2px_0_#000]"> 
+        HÉROES DE MARVEL 
+    </h1>
 
-<nav>
-    <ul>
-        <li><a routerLink="/dashboard">DASHBOARD</a></li>
-        <li><a routerLink="/heroes">HEROES</a></li>
-    </ul>
-</nav>
+    <nav class="w-full">
+        <ul class="flex flex-row justify-center gap-4">
+            <li class="flex bg-neutral-800 hover:bg-gray-700 text-white font-semibold rounded">
+                <a routerLink="/dashboard" class="px-4 py-0.5">DASHBOARD</a>
+            </li>
+            
+            <li class="flex bg-neutral-800 hover:bg-gray-700 text-white font-semibold rounded">
+                <a routerLink="/heroes" class="px-4 py-0.5">H&Eacute;ROES</a>
+            </li>
+        </ul>
+    </nav>
+</header>
 
 <router-outlet></router-outlet>
 <!-- FOOTER -->

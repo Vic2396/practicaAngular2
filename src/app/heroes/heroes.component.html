@@ -1,15 +1,44 @@
-<h2>HEROES</h2>
+<section class="flex flex-col gap-4 items-center pt-6 pb-4">
+    <h2 class="w-max px-10 py-1 text-center text-white text-lg font-extrabold lg:w-max border-t-2 border-b-2 border-rose-600 [text-shadow:_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000,_1px_1px_0_#000]">
+        LISTADO H&Eacute;ROES
+    </h2>
 
-<ul class="heroes">
-    @for (hero of heroes; track hero.id) {
-    <li>
-        <a routerLink="/hero/{{hero.id}}">
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
-        </a>
-    </li>
-    }
-</ul>
+    <div class="w-full max-w-7xl grid grid-cols-1 gap-4 px-4 md:px-20">
+        @if (heroes && heroes.length > 0) {
+            <ul class="heroes grid grid-cols-1 sm:grid-cols-2 gap-3">
+                @for (hero of heroes; track hero.id) {
+                    <li class="relative cursor-pointer hover:left-1">
+                        <a routerLink="/hero/{{hero.id}}" class="grid grid-cols-[auto_1fr] h-full text-sm lg:text-lg rounded overflow-hidden">
+                            <span class="badge px-3 py-2 text-white bg-neutral-700">
+                                {{hero.id}}
+                            </span> 
+                            <span class=" pl-3 py-2 bg-neutral-200">
+                                {{hero.name}}
+                            </span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        } @else {
+            <p class="text-center">Cargando listado de h&eacute;roes...</p>
+        }
+       
+        
+        <div class="max-w-xl grid grid-cols-3 justify-self-center gap-4 pt-2 border-t-2 border-rose-600">
+            @if (currentPage > 1) {
+                <button (click)="changePage(-1)" class="px-4 py-1 bg-neutral-900 hover:bg-neutral-700 text-white rounded">
+                    Anterior
+                </button>
+            }
+            
+            <span class="text-center col-start-2">Página {{ currentPage }} de {{ totalPages }}</span>
+            
+            @if (currentPage < totalPages) {
+                <button (click)="changePage(1)" class="px-4 py-1 bg-neutral-900 hover:bg-neutral-700 text-white rounded">
+                    Siguiente
+                </button>
+            }
+        </div>
+    </div>
+</section>
 
-<button (click)="changePage(-1)">Anterior</button>
-<span>Página {{ currentPage }} of {{ totalPages }}</span>
-<button (click)="changePage(1)">Siguiente</button>
